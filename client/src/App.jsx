@@ -21,17 +21,21 @@ function App() {
         <p>Your trusted book collector</p>
       </header>
       <main>
-        {/* Array.from() makes sure the array of objects books is an array, so
-        map can work and return a new array */}
-        {Array.from(books).map((book) => {
-          return (
-            <article key={book._id}>
-              <h2>{book.title}</h2>
-              <p>{book.description}</p>
-              <p>{book.status}</p>
-            </article>
-          );
-        })}
+        {books.length > 0 &&
+          Array.from(books).map((book) => {
+            {
+              /* Array.from() makes sure the array of objects books is an array, so
+        map can work and return a new array */
+            }
+            return (
+              <article key={book._id}>
+                <h2>{book.title}</h2>
+                <p>{book.description}</p>
+                <p>{book.status}</p>
+              </article>
+            );
+          })}
+        {books.length < 0 && <p>The book collection is empty</p>}
       </main>
     </>
   );

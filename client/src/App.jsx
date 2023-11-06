@@ -1,6 +1,10 @@
 import "./App.css";
 import { useState, useEffect } from "react";
+import { Routes, Route, Link, BrowserRouter } from "react-router-dom";
 import axios from "axios";
+
+import Home from "./pages/Home";
+import About from "./pages/About";
 
 function App() {
   const [books, setBooks] = useState("");
@@ -14,30 +18,32 @@ function App() {
     const res = await axios.get(API);
     setBooks(res.data);
   }
+
   return (
-    <>
-      <header>
-        <h1>Can of Books</h1>
-        <p>Your trusted book collector</p>
-      </header>
-      <main>
-        {books.length > 0 &&
-          Array.from(books).map((book) => {
-            {
-              /* Array.from() makes sure the array of objects books is an array, so
-        map can work and return a new array */
-            }
-            return (
-              <article key={book._id}>
-                <h2>{book.title}</h2>
-                <p>{book.description}</p>
-                <p>{book.status}</p>
-              </article>
-            );
-          })}
-        {books.length < 0 && <p>The book collection is empty</p>}
-      </main>
-    </>
+    <BrowserRouter>
+      <>
+        <header>
+          <h1>Can of Books</h1>
+          <p>Your trusted book collector</p>
+        </header>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+          </ul>
+        </nav>
+        <main>
+          <Routes>
+            <Route path="/about" element={<About />} />
+            <Route path="/" element={<Home books={books} />} />
+          </Routes>
+        </main>
+      </>
+    </BrowserRouter>
   );
 }
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-export default function Form({ onSubmit }) {
+export default function Form({ books, setBooks }) {
   const [formData, setFormData] = useState({
     title: "",
     description: "",

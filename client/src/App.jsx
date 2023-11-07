@@ -4,7 +4,7 @@ import { Routes, Route, Link, BrowserRouter } from "react-router-dom";
 import axios from "axios";
 import Home from "./pages/Home";
 import About from "./pages/About";
-
+const API_Url = process.env.VITE_SERVER_URL || "http://localhost:8080";
 function App() {
   const [books, setBooks] = useState([]);
 
@@ -13,14 +13,14 @@ function App() {
   }, []);
 
   async function getBooks() {
-    const API = `http://localhost:8080/books`; // https://can-of-books-ezdy.onrender.com/books
+    const API = `${API_Url}/books`;
     const res = await axios.get(API);
     setBooks(res.data);
   }
   async function deleteBook(id) {
     const check = confirm("Are you sure?");
     if (check) {
-      const API = `http://localhost:8080/books/${id}`; // https://can-of-books-ezdy.onrender.com/books/${id}
+      const API = `${API_Url}/books/${id}`;
       await axios.delete(API);
       getBooks();
     } else {

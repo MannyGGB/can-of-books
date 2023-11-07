@@ -1,11 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
 
-export default function Form({ books, setBooks }) {
+export default function Form({ onSubmit }) {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
-    status: "", // might have to change this as we are using a Boolean
+    status: "",
   });
 
   function handleChange(event) {

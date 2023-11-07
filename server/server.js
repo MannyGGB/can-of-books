@@ -23,4 +23,9 @@ app.post("/books", async (request, response) => {
   response.json(newBook);
 });
 
+app.delete("/books/:id", async (request, response) => {
+  const deletedBook = await Book.findByIdAndDelete(request.params.id);
+  response.json(deletedBook);
+});
+
 app.listen(PORT, () => console.log(`App is running PORT ${PORT}`));

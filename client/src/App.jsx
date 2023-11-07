@@ -13,11 +13,20 @@ function App() {
   }, []);
 
   async function getBooks() {
-    const API = `http://localhost:8080/books`;
+    const API = `http://localhost:8080/books`; // https://can-of-books-ezdy.onrender.com/books
     const res = await axios.get(API);
     setBooks(res.data);
   }
-
+  async function deleteBook(id) {
+    const check = confirm("Are you sure?");
+    if (check) {
+      const API = `http://localhost:8080/books/${id}`; // https://can-of-books-ezdy.onrender.com/books/${id}
+      await axios.delete(API);
+      getBooks();
+    } else {
+      alert("Good choice!");
+    }
+  }
   return (
     <BrowserRouter>
       <>
@@ -38,7 +47,16 @@ function App() {
         <main>
           <Routes>
             <Route path="/about" element={<About />} />
-            <Route path="/" element={<Home books={books} />} />
+            <Route
+              path="/"
+              element={
+                <Home
+                  books={books}
+                  setBooks={setBooks}
+                  deleteBook={deleteBook}
+                />
+              }
+            />
           </Routes>
         </main>
       </>

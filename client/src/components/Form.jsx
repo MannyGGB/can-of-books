@@ -14,7 +14,7 @@ export default function Form({ books, setBooks }) {
 
   async function submitForm(event) {
     event.preventDefault();
-    const API = "http://localhost:8080/books";
+    const API = "http://localhost:8080/books"; // https://can-of-books-ezdy.onrender.com/books
     const res = await axios.post(API, formData);
     setBooks([...books, res.data]);
   }

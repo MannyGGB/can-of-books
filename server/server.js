@@ -3,6 +3,7 @@ const cors = require("cors");
 require("dotenv").config();
 const app = express();
 app.use(cors());
+app.use(express.json());
 const PORT = 8080;
 
 const mongoose = require("mongoose");
@@ -15,6 +16,11 @@ app.get("/", (request, response) => response.json("Root route for books."));
 app.get("/books", async (request, response) => {
   const books = await Book.find(request.query);
   response.json(books);
+});
+
+app.post("/books", async (request, response) => {
+  const newBook = await Book.create(request.body);
+  response.json(newBook);
 });
 
 app.listen(PORT, () => console.log(`App is running PORT ${PORT}`));

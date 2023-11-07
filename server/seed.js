@@ -10,19 +10,19 @@ async function seed() {
       title: "The Great Gatsby",
       description:
         "A classic novel by F. Scott Fitzgerald set in the Roaring Twenties.",
-      status: true,
+      status: "read",
     },
     {
       title: "To Kill a Mockingbird",
       description:
         "A poignant novel by Harper Lee that explores themes of racial injustice in the American South.",
-      status: false,
+      status: "not read",
     },
     {
       title: "Dune",
       description:
         "A science fiction masterpiece by Frank Herbert, set in a distant future on the desert planet Arrakis.",
-      status: true,
+      status: "read",
     },
   ]);
   console.log("Book created");

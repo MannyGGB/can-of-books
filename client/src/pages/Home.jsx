@@ -1,7 +1,10 @@
-export default function Home({ books }) {
+import Form from "../components/Form";
+
+export default function Home({ books, setBooks }) {
   return (
     <div>
       <h2>Home Page</h2>
+      <Form books={books} setBooks={setBooks} />
       {books.length > 0 &&
         books.map((book) => (
           <article key={book._id}>
@@ -10,7 +13,7 @@ export default function Home({ books }) {
             <p>{book.status}</p>
           </article>
         ))}
-      {books.length === 0 && <p>The book collection is empty</p>}
+      {books.length < 0 && <p>The book collection is empty</p>}
     </div>
   );
 }

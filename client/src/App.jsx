@@ -2,12 +2,11 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import { Routes, Route, Link, BrowserRouter } from "react-router-dom";
 import axios from "axios";
-
 import Home from "./pages/Home";
 import About from "./pages/About";
 
 function App() {
-  const [books, setBooks] = useState("");
+  const [books, setBooks] = useState([]);
 
   useEffect(() => {
     getBooks();

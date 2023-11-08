@@ -1,10 +1,12 @@
+import dotenv from "dotenv";
 import "./App.css";
 import { useState, useEffect } from "react";
 import { Routes, Route, Link, BrowserRouter } from "react-router-dom";
 import axios from "axios";
 import Home from "./pages/Home";
 import About from "./pages/About";
-const API_Url = process.env.VITE_SERVER_URL || "http://localhost:8080";
+
+const API_Url = "http://localhost:8080" || process.env.VITE_SERVER_URL;
 function App() {
   const [books, setBooks] = useState([]);
 

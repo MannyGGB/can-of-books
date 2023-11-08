@@ -10,7 +10,7 @@ export default function Home({ books, setBooks, deleteBook }) {
           <article key={book._id}>
             <h2>{book.title}</h2>
             <p>{book.description}</p>
-            <p>{book.status}</p>
+            <p>Read? {book.status ? "☑️" : "❌"}</p>
             <button
               onClick={() => {
                 deleteBook(book._id);

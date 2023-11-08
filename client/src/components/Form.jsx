@@ -5,11 +5,15 @@ export default function Form({ books, setBooks }) {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
-    status: "",
+    status: false,
   });
 
   function handleChange(event) {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
+    if (event.target.type === "checkbox") {
+      setFormData({ ...formData, [event.target.name]: event.target.checked });
+    } else {
+      setFormData({ ...formData, [event.target.name]: event.target.value });
+    }
   }
 
   async function submitForm(event) {
@@ -27,7 +31,7 @@ export default function Form({ books, setBooks }) {
         placeholder="description"
         onChange={handleChange}
       />
-      <input name="status" placeholder="status" onChange={handleChange} />
+      <input name="status" type="checkbox" onChange={handleChange} />
       <button>Add Book</button>
     </form>
   );

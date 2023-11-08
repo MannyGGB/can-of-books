@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Form from "../components/Form";
 
 export default function Home({ books, setBooks, deleteBook }) {
@@ -8,7 +9,9 @@ export default function Home({ books, setBooks, deleteBook }) {
       {books.length > 0 &&
         books.map((book) => (
           <article key={book._id}>
-            <h2>{book.title}</h2>
+            <Link to={`/book/${book._id}`}>
+              <h2>{book.title}</h2>
+            </Link>
             <p>{book.description}</p>
             <p>Read? {book.status ? "☑️" : "❌"}</p>
             <button

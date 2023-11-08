@@ -35,7 +35,7 @@ export default function Form({ books, setBooks, book, setBook }) {
   }
 
   return (
-    <form onSubmit={book?.name ? updateBook : addBook}>
+    <form onSubmit={book?.title ? updateBook : addBook}>
       <input
         name="title"
         placeholder="title"

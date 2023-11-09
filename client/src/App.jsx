@@ -63,10 +63,10 @@ function App() {
             <Route path="/book/:id" element={<Book />} />
           </Routes>
         </main>
+        <footer>
+          <p>&copy; You want books? We got books!</p>
+        </footer>
       </>
-      <footer>
-        <p>&copy; You want books? We got books!</p>
-      </footer>
     </BrowserRouter>
   );
 }

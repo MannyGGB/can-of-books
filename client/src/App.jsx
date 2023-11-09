@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Book from "./pages/Book";
 
-const API_Url = "http://localhost:8080" || process.env.VITE_SERVER_URL;
+const API_Url = import.meta.env.VITE_SERVER_URL || "http://localhost:8080";
 
 function App() {
   const [books, setBooks] = useState([]);

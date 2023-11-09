@@ -7,6 +7,7 @@ const API_Url = "http://localhost:8080" || process.env.VITE_SERVER_URL;
 
 export default function Book() {
   const [book, setBook] = useState({});
+  const [isError, setIsError] = useState(false);
 
   const params = useParams();
 
@@ -16,8 +17,17 @@ export default function Book() {
 
   async function getBook() {
     const API = `${API_Url}/books/?_id=${params.id}`;
-    const res = await axios.get(API);
-    setBook(res.data[0]);
+    try {
+      const res = await axios.get(API);
+      setBook(res.data[0]);
+    } catch (error) {
+      console.log(error);
+      setIsError(true);
+    }
+  }
+
+  if (isError) {
+    return <p> Whoops!</p>;
   }
 
   return (

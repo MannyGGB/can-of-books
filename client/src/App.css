@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+:root {
+  --font: monospace;
+  --font-color: white;
+  --background-color: purple;
+}
+body {
+  /* background-image: url("./library-background.jpg"); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: var(--font);
+  color: var(--font-color);
+  background-color: var(--background-color);
+}
+h2 {
+  text-decoration: none;
+}

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Form from "../components/Form";
 
-const API_Url = "http://localhost:8080" || process.env.VITE_SERVER_URL;
+const API_Url = "http://localhost:8080" || import.meta.env.VITE_SERVER_URL;
 
 export default function Book() {
   const [book, setBook] = useState({});
